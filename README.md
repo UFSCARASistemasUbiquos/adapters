@@ -1,2 +1,3 @@
 adapters
 ========
+teste
