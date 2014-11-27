@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView" />
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text1"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginTop="30dp" />
+
+    <Button
+        android:id="@+id/btnOn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="LIGAR LED"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="70dp" />
+
+    <Button
+        android:id="@+id/atualizar"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:text="STATUS"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="125dp" />
+
+    <Button
+        android:id="@+id/btnOff"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="DESLIGAR LED"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="145dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text2"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginTop="180dp" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="on"
+        android:text="@string/on"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="155dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="off"
+        android:text="@string/off"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="70dp" />
+
+    <TextView
+        android:id="@+id/resposta"
+        android:text="Desconhecido"
+        android:layout_width="190dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginLeft="100dp"
+        android:textSize="24dp"
+        android:textIsSelectable="true"
+        android:textStyle="bold"
+        android:singleLine="true"
+        android:phoneNumber="false" />
+
+</RelativeLayout>
