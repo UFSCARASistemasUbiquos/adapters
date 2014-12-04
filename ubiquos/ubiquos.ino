@@ -1,4 +1,4 @@
-char a[10];
+char a[1024];
 int b = 0;
 int c = 0;
 
@@ -20,16 +20,22 @@ void loop()
   if(a[0]=='1'){
     digitalWrite(11, HIGH);
     c = 0;
+    Serial.print("*");
   }
   if(a[0]=='0'){
     digitalWrite(11, LOW);
     c = 0;
+    Serial.print("*");
   }
   if (strcmp(a, "LED") == 0){
     Serial.print("ARDUINO: ");
     Serial.print(b);
     b++;
     c = 0;
+  }
+  if(c == 1024){
+    c = 0;
+    Serial.print("*");
   }
 }
 

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bluetooth;
+package server.bluetooth;
 
 /**
  *
- * @author root
+ * @author virtual
  */
 import javax.bluetooth.DiscoveryAgent;
 import javax.bluetooth.LocalDevice;
@@ -16,23 +16,23 @@ import javax.microedition.io.Connector;
 import javax.microedition.io.StreamConnection;
 import javax.microedition.io.StreamConnectionNotifier;
 
-public class WaitThread implements Runnable {
+public class EsperaThread implements Runnable {
 
     /**
      * Constructor
      */
-    public WaitThread() {
+    public EsperaThread() {
     }
 
     @Override
     public void run() {
-        waitForConnection();
+        esperandoConexao();
     }
 
     /**
      * Waiting for connection from devices
      */
-    private void waitForConnection() {
+    private void esperandoConexao() {
         // retrieve the local Bluetooth device object
         LocalDevice local = null;
 
@@ -48,20 +48,18 @@ public class WaitThread implements Runnable {
             String url = "btspp://localhost:" + uuid.toString() + ";name=RemoteBluetooth";
             notifier = (StreamConnectionNotifier) Connector.open(url);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("ERRO: " + e.getMessage());
             return;
         }
         // waiting for connection
         while (true) {
             try {
-                System.out.println("waiting for connection...");
+                System.out.println("Aguardando conexão...");
                 connection = notifier.acceptAndOpen();
-
-                Thread processThread = new Thread(new ProcessConnectionThread(connection));
+                Thread processThread = new Thread(new ProcessoConexaoThread(connection));
                 processThread.start();
             } catch (Exception e) {
-                e.printStackTrace();
-                return;
+                System.out.println("ERRO: " + e.getMessage());
             }
         }
     }

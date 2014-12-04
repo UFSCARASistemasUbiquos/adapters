@@ -69,9 +69,13 @@ public class ProcessConnectionThread implements Runnable{
 	    			robot.keyPress(KeyEvent.VK_LEFT);
 	    			System.out.println("Left");
 	    			break;
+                           default:
+                               System.out.println(command);
+	    			break;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 }

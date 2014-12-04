@@ -70,9 +70,9 @@ public class EchoServer {
                 if(texto.equalsIgnoreCase("LED")){
                     String b = arduino2.comunicacaoArduinoRecebe(texto);
                     EnviaMensagem(b);
-                }else{
-                    arduino2.comunicacaoArduino(texto);
                 }
+                arduino2.comunicacaoArduino(texto);
+                
                 if(texto.equalsIgnoreCase("")){
                     break;
                 }
