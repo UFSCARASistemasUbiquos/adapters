@@ -19,12 +19,8 @@ public class ServerBluetooth {
     public static void main(String[] args) {
         // TODO code application logic here
         //while(true){
-            //Thread esperaThread = new Thread(new EsperaThread());
-            //esperaThread.start();
-        
-        Arduino arduino = new Arduino();
-        String teste = arduino.comunicacaoEnviaRecebe("5+3");
-        System.out.println("VALOR: " + teste);
+            Thread esperaThread = new Thread(new EsperaThread());
+            esperaThread.start();
         //}
     }
     
