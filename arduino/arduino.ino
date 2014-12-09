@@ -3,7 +3,7 @@
 #include <string.h>
 
 int valor = 100;
-int a;
+char a[1024];
 
 float Calcula(char *s){
 	int c = 0, entrada = 0, op = 0, g;
@@ -70,6 +70,7 @@ void setup()
 
 void loop()
 {
+  int c = 0, b;
   while (Serial.available() == 0);  // Wait here until input buffer has a character
   {
     a[c++] = Serial.read();
@@ -92,7 +93,7 @@ void loop()
     c = 0;
   }else{
     float resultado;
-    resultado = Calcula(entrada);
+    resultado = Calcula(a);
     Serial.print(resultado);
   }
 }

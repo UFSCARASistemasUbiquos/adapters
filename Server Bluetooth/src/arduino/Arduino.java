@@ -41,4 +41,8 @@ public class Arduino{
             Logger.getLogger(Arduino.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public String comunicacaoEnviaRecebe(String valor) {
+        return arduino.recebeDados(valor);
+    }
 }
