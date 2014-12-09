@@ -90,6 +90,33 @@ public class ControlePorta {
             String stringToConvert = opcao;
             byte[] theByteArray = stringToConvert.getBytes();
             serialOut.write(theByteArray);//escreve o valor na porta serial para ser enviado
+            
+            int available = 0;
+            /* FICA ESPERANDO A RESPOSTA */
+            while(available==0){
+                try {
+                    available = serialIn.available();
+                } catch (IOException ex) {
+                    Logger.getLogger(ControlePorta.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            byte[] msgBuffer = new byte[available];
+
+            if (available > 0) {
+                try {
+                    serialIn.read(msgBuffer);
+                } catch (IOException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                    /*Logger.getLogger(ControlePorta.class.getName()).log(Level.SEVERE, null, ex);*/
+                }
+            }
+            String Str = new String(msgBuffer);
+            if(Str.equalsIgnoreCase(";")){
+                System.out.println("CERTO");
+            }else{
+                System.out.println("ERRO");
+            }
+            
         } catch (IOException ex) {
             /*JOptionPane.showMessageDialog(null, "Não foi possível enviar o dado. ",
                     "Enviar dados", JOptionPane.PLAIN_MESSAGE);*/
@@ -97,10 +124,7 @@ public class ControlePorta {
         }
     }
 
-    public String recebeDados(String opcao) {
-        System.out.println("OPCAO: "+opcao);
-        opcao = opcao.split("-")[0];
-        System.out.println("OPCAO: "+opcao);
+    public String enviaRecebeDados(String opcao) {       
         try {
             String stringToConvert = opcao;
             byte[] theByteArray = stringToConvert.getBytes();
@@ -119,7 +143,6 @@ public class ControlePorta {
             }
         }
         byte[] msgBuffer = new byte[available];
-        
         if (available > 0) {
             try {
                 serialIn.read(msgBuffer);
