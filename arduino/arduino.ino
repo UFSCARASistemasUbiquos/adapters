@@ -26,7 +26,7 @@ float Calcula(char *s){
     if((s[c] >= '0' && s[c] <= '9') || s[c] == '.'){
       /* VERIFICA SE EH CONTINUACAO DE UM NUMERO (DEZENA, CENTENA, UNIDADE, etc) */
       if(flag==0){
-        pilhaVal[entrada] =  s[c] - '0';
+        pilhaVal[entrada] = s[c] - '0';
         if(flagNumNegativo){
           pilhaVal[entrada] = pilhaVal[entrada] * -1.0;
           flagNumNegativo = 0;
@@ -61,23 +61,21 @@ float Calcula(char *s){
   }
   return pilhaVal[0];
 }
-
 void setup()
 {
   // start serial port at 9600 bps:
   Serial.begin(9600);
   pinMode(11, OUTPUT);
 }
-
 void loop()
 {
-  while (Serial.available() == 0);  // Wait here until input buffer has a character
+  while (Serial.available() == 0); // Wait here until input buffer has a character
   {
     string[c++] = Serial.read();
     string[c] = '\0';
   }
   if(string[c-1] == ';'){
-    string[c-1] == '\0';
+    string[c-1] = '\0';
     if (strcmp(string, "LIGALED1") == 0){
       digitalWrite(11, HIGH);
     }else if (strcmp(string, "DESLIGALED1") == 0){
