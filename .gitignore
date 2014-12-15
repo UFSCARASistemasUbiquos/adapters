@@ -1,3 +1,4 @@
+.gitignore
 *~
 *__
 /Server Bluetooth/nbproject/private/
