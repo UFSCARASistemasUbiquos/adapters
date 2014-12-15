@@ -45,7 +45,9 @@ public class EsperaThread implements Runnable {
             local.setDiscoverable(DiscoveryAgent.GIAC);
 
             UUID uuid = new UUID(11111111); // "04c6093b-0000-1000-8000-00805f9b34fb"
+                                            // "00a98ac7-0000-1000-8000-00805f9b34fb"
             String url = "btspp://localhost:" + uuid.toString() + ";name=RemoteBluetooth";
+            System.out.println("UUID: "+uuid.toString());
             notifier = (StreamConnectionNotifier) Connector.open(url);
         } catch (Exception e) {
             System.out.println("ERRO: " + e.getMessage());

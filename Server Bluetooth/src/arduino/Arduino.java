@@ -18,8 +18,8 @@ public class Arduino{
     * Construtor da classe Arduino
     */
     public Arduino(){
-        arduino = new ControlePorta("COM3",9600);//Windows - porta e taxa de transmissão
-        //arduino = new ControlePorta("/dev/ttyUSB0",9600);//Linux - porta e taxa de transmissão
+        //arduino = new ControlePorta("COM3",9600);//Windows - porta e taxa de transmissão
+        arduino = new ControlePorta("/dev/ttyACM0",9600);//Linux - porta e taxa de transmissão
     }
     /**
     * Envia o comando para a porta serial
@@ -43,6 +43,6 @@ public class Arduino{
     }
     
     public String comunicacaoEnviaRecebe(String valor) {
-        return arduino.recebeDados(valor);
+        return arduino.enviaRecebeDados(valor);
     }
 }

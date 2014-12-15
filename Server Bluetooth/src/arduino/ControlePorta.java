@@ -9,12 +9,14 @@ package arduino;
  *
  * @author virtual
  */
+import add.Cronometro;
 import gnu.io.CommPortIdentifier;
 import gnu.io.NoSuchPortException;
 import gnu.io.SerialPort;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -39,21 +41,34 @@ public class ControlePorta {
         this.taxa = taxa;
         this.initialize();
     }
+    
+    private static final String PORT_NAMES[] = {
+        "/dev/ttyACM0", // Raspberry Pi
+    };
 
     /**
      * Médoto que verifica se a comunicação com a porta serial está ok
      */
     private void initialize() {
+        System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
         try {
-            //Define uma variável portId do tipo CommPortIdentifier para realizar a comunicação serial
             CommPortIdentifier portId = null;
-            try {
-                //Tenta verificar se a porta COM informada existe
-                portId = CommPortIdentifier.getPortIdentifier(this.portaCOM);
-            } catch (NoSuchPortException npe) {
-                //Caso a porta COM não exista será exibido um erro
-                JOptionPane.showMessageDialog(null, "Porta COM não encontrada.",
-                        "Porta COM", JOptionPane.PLAIN_MESSAGE);
+            Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
+            //First, Find an instance of serial port as set in PORT_NAMES.
+            while (portEnum.hasMoreElements()) {
+                CommPortIdentifier currPortId = (CommPortIdentifier) portEnum.nextElement();
+
+                for (String portName : PORT_NAMES) {
+
+                    if (currPortId.getName().equals(portName)) {
+                        portId = currPortId;
+                        break;
+                    }
+                }
+            }
+            if (portId == null) {
+                System.out.println("Could not find COM port.");
+                return;
             }
             //Abre a porta COM
             SerialPort port = (SerialPort) portId.open("Comunicação serial", this.taxa);
@@ -133,29 +148,31 @@ public class ControlePorta {
             /*JOptionPane.showMessageDialog(null, "Não foi possível enviar o dado. ", "Enviar dados", JOptionPane.PLAIN_MESSAGE);*/
             System.out.println("ERRO: " + ex.getMessage());
         }
+        String texto = "";
+        int caracter;
         int available = 0;
-        /* FICA ESPERANDO A RESPOSTA */
-        while(available==0){
-            try {
-                available = serialIn.available();
-            } catch (IOException ex) {
-                Logger.getLogger(ControlePorta.class.getName()).log(Level.SEVERE, null, ex);
+        while(true){
+            if(available==0){
+                while(available==0){
+                    try {
+                        available = serialIn.available();
+                    } catch (IOException ex) {
+                        Logger.getLogger(ControlePorta.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
             }
-        }
-        byte[] msgBuffer = new byte[available];
-        if (available > 0) {
             try {
-                serialIn.read(msgBuffer);
+                caracter = serialIn.read();
+                texto += (char)caracter;
+                if(caracter == ';'){
+                    break;
+                }
             } catch (IOException ex) {
                 System.out.println("ERRO: " + ex.getMessage());
-                /*Logger.getLogger(ControlePorta.class.getName()).log(Level.SEVERE, null, ex);*/
             }
         }
-        String Str = new String(msgBuffer);
-        /*int valor = Integer.parseInt(Str);
-         System.out.println("TESTE: "+valor );*/
-        return Str;
-    }
+        return texto;
+    }    
     
     public void enviaDadosArduino(String valor) throws InterruptedException {
         EnviaComando envia = new EnviaComando(serialOut, valor);
@@ -163,15 +180,6 @@ public class ControlePorta {
         t.start();
         //Thread.sleep(0, 1);
         t.interrupt();
-        /*
-        try {
-            String stringToConvert = valor;
-            byte[] theByteArray = stringToConvert.getBytes();
-            serialOut.write(theByteArray);//escreve o valor na porta serial para ser enviado
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possível enviar o dado. ", "Enviar dados", JOptionPane.PLAIN_MESSAGE);
-        }
-                */
     }
     
 }

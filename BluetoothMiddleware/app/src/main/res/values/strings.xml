@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Bluetooth Middleware</string>
+    <string name="action_settings">Opções</string>
+    <string name="on">Conectar</string>
+    <string name="off">Desligar</string>
+
+    <string name="text1">Opções LED</string>
+    <string name="text2">Opções Bluetooth</string>
+
+</resources>
