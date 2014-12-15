@@ -1,17 +1,17 @@
 adapters
 ========
 
-Aplicativo Server Bluetooth
+Aplicativo Server Bluetooth (JAVA feito com Netbeans 8.0)
 
 consiste em um aplicativo que faz a comunicação entre arduino e android através de um servidor bluetooth escrito em java utilizando ambiente linux.
 
 
-Aplicativo Arduino
+Aplicativo Arduino(C/C++ feito com Arduino IDE)
 
 contem o codigo fonte para utilizar no arduino.
 
 
-Aplicativo Bluetooth Middleware
+Aplicativo Bluetooth Middleware(JAVA feito com Android Studio)
 
 contem o codigo fonte android feito no Android Studio com algumas funcoes para demonstrar a comunicacao entre o arduino e android.
 
