@@ -4,7 +4,8 @@
 
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:background="#ff000248">
 
 
     <TextView
@@ -16,7 +17,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffffff" />
 
     <TextView
         android:id="@+id/textView2"
@@ -24,7 +26,8 @@
         android:layout_height="wrap_content"
         android:text="@string/text1"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="60dp"
+        android:textColor="#ffffffff" />
 
     <Button
         android:id="@+id/btnOn"
@@ -32,23 +35,26 @@
         android:layout_height="wrap_content"
         android:text="LIGAR LED"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="70dp" />
+        android:layout_marginTop="120dp"
+        android:background="@android:drawable/btn_default" />
 
     <Button
         android:id="@+id/atualizar"
-        android:layout_width="90dp"
+        android:layout_width="150dp"
         android:layout_height="40dp"
-        android:text="STATUS"
+        android:text="CONTADOR"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="125dp" />
+        android:layout_marginTop="175dp"
+        android:background="@android:drawable/btn_default" />
 
     <Button
         android:id="@+id/btnOff"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:text="DESLIGAR LED"
-        android:layout_marginTop="70dp"
-        android:layout_marginLeft="145dp" />
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="145dp"
+        android:background="@android:drawable/btn_default" />
 
     <TextView
         android:id="@+id/textView3"
@@ -56,7 +62,8 @@
         android:layout_height="wrap_content"
         android:text="@string/text2"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginTop="280dp" />
+        android:layout_marginTop="330dp"
+        android:textColor="#ffffffff" />
 
     <Button
         android:id="@+id/button1"
@@ -64,8 +71,9 @@
         android:layout_height="wrap_content"
         android:onClick="on"
         android:text="@string/on"
-        android:layout_marginTop="320dp"
-        android:layout_marginLeft="155dp" />
+        android:layout_marginTop="370dp"
+        android:layout_marginLeft="105dp"
+        android:background="@android:drawable/btn_default" />
 
     <Button
         android:id="@+id/button2"
@@ -73,8 +81,9 @@
         android:layout_height="wrap_content"
         android:onClick="off"
         android:text="@string/off"
-        android:layout_marginTop="320dp"
-        android:layout_marginLeft="70dp" />
+        android:layout_marginTop="370dp"
+        android:layout_marginLeft="20dp"
+        android:background="@android:drawable/btn_default" />
 
     <Button
         android:id="@+id/buttonCalc"
@@ -82,8 +91,9 @@
         android:layout_height="wrap_content"
         android:onClick="off"
         android:text="CALCULAR"
-        android:layout_marginTop="170dp"
-        android:layout_marginLeft="10dp" />
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="10dp"
+        android:background="@android:drawable/btn_default" />
 
 
     <TextView
@@ -91,34 +101,37 @@
         android:text="Desconhecido"
         android:layout_width="190dp"
         android:layout_height="54dp"
-        android:layout_marginTop="130dp"
-        android:layout_marginLeft="100dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginLeft="160dp"
         android:textSize="24dp"
         android:textIsSelectable="true"
         android:textStyle="bold"
         android:singleLine="true"
-        android:phoneNumber="false" />
+        android:phoneNumber="false"
+        android:textColor="#ffffffff" />
 
 
 
     <EditText
         android:layout_width="190dp"
         android:layout_height="54dp"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="260dp"
         android:layout_marginLeft="10dp"
-        android:id="@+id/enviaString" />
+        android:id="@+id/enviaString"
+        android:textColor="#ffffffff" />
 
     <TextView
         android:id="@+id/respostaCalc"
         android:text=""
         android:layout_width="90dp"
         android:layout_height="54dp"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="260dp"
         android:layout_marginLeft="200dp"
         android:textSize="24dp"
         android:textIsSelectable="true"
         android:textStyle="bold"
         android:singleLine="true"
-        android:phoneNumber="false" />
+        android:phoneNumber="false"
+        android:textColor="#ffffffff" />
 
 </RelativeLayout>

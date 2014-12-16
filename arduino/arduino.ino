@@ -80,8 +80,8 @@ void loop()
       digitalWrite(11, HIGH);
     }else if (strcmp(string, "DESLIGALED1") == 0){
       digitalWrite(11, LOW);
-    }else if (strcmp(string, "STATUSLED1") == 0){
-      Serial.print("ARDUINO: ");
+    }else if (strcmp(string, "CONTADOR") == 0){
+      Serial.print("NUM ");
       Serial.print(b);
       b++;
     }else{

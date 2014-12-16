@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Bluetooth Middleware</string>
+    <string name="app_name">Universal Device Pipe for Ubiquitous Service</string>
     <string name="action_settings">Opções</string>
-    <string name="on">Conectar</string>
+    <string name="on">Ligar/Conectar</string>
     <string name="off">Desligar</string>
 
     <string name="text1">Opções LED</string>

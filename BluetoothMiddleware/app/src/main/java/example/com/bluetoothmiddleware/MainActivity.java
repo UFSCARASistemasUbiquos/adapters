@@ -40,6 +40,8 @@ public class MainActivity extends Activity {
     public OutputStream outStream = null;
     public InputStream inStream = null;
 
+    public boolean conectado = false;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,11 +85,24 @@ public class MainActivity extends Activity {
         });
         btnAtualizar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                sendData("STATUSLED1;");
+                sendData("CONTADOR;");
                 Recebe();
             }
         });
     }
+
+    /*
+    @Override
+    public void onResume(){
+        if( mBluetoothAdapter.isEnabled()) {
+            if(this.conectado) {
+                AtivaBotoes();
+            }else{
+                DesativaBotoes();
+            }
+        }
+    }
+    */
 
     public void on(View view) {
         if (!mBluetoothAdapter.isEnabled()) {
@@ -99,12 +114,12 @@ public class MainActivity extends Activity {
         } catch (InterruptedException e) {
             Toast.makeText(getApplicationContext(), "ERROR 7: " + e, Toast.LENGTH_LONG).show();
         }
-        boolean conectado = false;
+        this.conectado = false;
         if (Connect()) {
             AtivaBotoes();
-            conectado = true;
+            this.conectado = true;
         }
-        if(!conectado) {
+        if(!this.conectado) {
             Toast.makeText(getApplicationContext(), "Servidor não encontrado! ", Toast.LENGTH_LONG).show();
         }
     }
@@ -254,9 +269,11 @@ public class MainActivity extends Activity {
         btnOn = (Button) findViewById(R.id.btnOn);
         btnOff = (Button) findViewById(R.id.btnOff);
         btnAtualizar = (Button)findViewById(R.id.atualizar);
+        btnCalc = (Button)findViewById(R.id.buttonCalc);
         btnOn.setEnabled(true);
         btnOff.setEnabled(true);
         btnAtualizar.setEnabled(true);
+        btnCalc.setEnabled(true);
     }
 
     public void DesativaBotoes()
@@ -264,8 +281,10 @@ public class MainActivity extends Activity {
         btnOn = (Button) findViewById(R.id.btnOn);
         btnOff = (Button) findViewById(R.id.btnOff);
         btnAtualizar = (Button)findViewById(R.id.atualizar);
+        btnCalc = (Button)findViewById(R.id.buttonCalc);
         btnOn.setEnabled(false);
         btnOff.setEnabled(false);
         btnAtualizar.setEnabled(false);
+        btnCalc.setEnabled(false);
     }
 }
